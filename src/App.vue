@@ -2,6 +2,12 @@
 import { RouterLink, RouterView } from 'vue-router'
 // import HelloWorld from './components/HelloWorld.vue'
 import HelloWorld from '@/components/HelloWorld.vue'
+import {getCategoryAPI} from '@/apis/testApi'
+getCategoryAPI().then((res)=>{
+console.log('====================================');
+console.log(res);
+console.log('====================================');
+})
 </script>
 
 <template>
