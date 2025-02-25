@@ -25,10 +25,16 @@ console.log('====================================');
   </header>
 
   <RouterView /> -->
-  <el-button type="primary" round>Primary</el-button>
+  <!-- <el-button type="primary" round>Primary</el-button> -->
+   <RouterView />
+   <div class="test">scss测试</div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
+.test {
+   color: $priceColor;
+}
+
 header {
   line-height: 1.5;
   max-height: 100vh;
