@@ -20,7 +20,7 @@ onMounted(() => {
 
 <template>
   <HomePanel >
-    <template #main>
+    <template #main1>
       <ul class="goods-list">
         <li v-for="item in newList" :key="item.id">
           <RouterLink :to="`/detail/${item.id}`">

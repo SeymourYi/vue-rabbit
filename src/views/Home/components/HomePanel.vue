@@ -23,7 +23,7 @@ defineProps({
       </div>
       <!-- 主体内容区域 -->
      <slot name="main"  />
-     <slot name="main1"  />
+     <slot name="main1" />
     </div>
   </div>
 </template>

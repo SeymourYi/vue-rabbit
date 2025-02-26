@@ -1,28 +1,28 @@
 <script setup>
  import { findTopCategoryAPI } from '@/apis/category'
  import {ref,onMounted } from 'vue'
- import {useRoute } from 'vue-router'
+ import {onBeforeRouteUpdate, useRoute } from 'vue-router'
  import {getBannerAPI} from '@/apis/home'
 import GoodsItem from '../Home/components/GoodsItem.vue'
-
-
   const categoryData = ref({})
   const route = useRoute()
-  const getCategory = async () => {
+  const getCategory = async (id=route.params.id) => {
     // 如何在setup中获取路由参数 useRoute() -> route 等价于this.$route
-    const res = await findTopCategoryAPI(route.params.id)
+    const res = await findTopCategoryAPI(id)
     categoryData.value = res.result
   }
   onMounted(() => {
     getCategory()
   })
 
+onBeforeRouteUpdate((to)=>{
+  getCategory(to.params.id)
+})
   const BannerList=ref([])
 const getBanner= async()=>{
 const  res =await getBannerAPI({
   distributionSite:'2'
 })
-console.log(res);
 BannerList.value=res.result
 }
 onMounted(() => {
@@ -79,7 +79,6 @@ onMounted(() => {
 
   margin: 0 auto;
   z-index: 98;
-
   img {
     width: 100%;
     height: 500px;
