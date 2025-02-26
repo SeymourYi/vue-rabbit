@@ -9,9 +9,13 @@ const categorystore=useCategoryStore()
         <RouterLink to="/">小兔鲜</RouterLink>
       </h1>
       <ul class="app-header-nav" >
+        <li class="home">
+            <RouterLink to="/">首页</RouterLink>
+        </li>
+
         <li
         v-for="item in categorystore.CategoryList" :key="item.id"
-        > <RouterLink :to="`/category/${item.id}`">{{item.name}}</RouterLink> </li>
+        > <RouterLink   active-class="active" :to="`/category/${item.id}`">{{item.name}}</RouterLink> </li>
       </ul>
       <div class="search">
         <i class="iconfont icon-search"></i>
