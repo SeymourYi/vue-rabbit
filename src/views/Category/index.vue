@@ -1,33 +1,36 @@
 <script setup>
- import { findTopCategoryAPI } from '@/apis/category'
- import {ref,onMounted } from 'vue'
- import {onBeforeRouteUpdate, useRoute } from 'vue-router'
- import {getBannerAPI} from '@/apis/home'
-import GoodsItem from '../Home/components/GoodsItem.vue'
-  const categoryData = ref({})
-  const route = useRoute()
-  const getCategory = async (id=route.params.id) => {
-    // 如何在setup中获取路由参数 useRoute() -> route 等价于this.$route
-    const res = await findTopCategoryAPI(id)
-    categoryData.value = res.result
-  }
-  onMounted(() => {
-    getCategory()
-  })
+//  import { findTopCategoryAPI } from '@/apis/category'
+//  import {ref,onMounted } from 'vue'
+//  import {onBeforeRouteUpdate, useRoute } from 'vue-router'
+//  import {getBannerAPI} from '@/apis/home'
 
-onBeforeRouteUpdate((to)=>{
-  getCategory(to.params.id)
-})
-  const BannerList=ref([])
-const getBanner= async()=>{
-const  res =await getBannerAPI({
-  distributionSite:'2'
-})
-BannerList.value=res.result
-}
-onMounted(() => {
-  getBanner()
-})
+import GoodsItem from '../Home/components/GoodsItem.vue'
+import { useBanner } from './components/useBanner'
+import { useCategory } from './components/useCategory'
+const{BannerList}= useBanner()
+const {categoryData } = useCategory()
+// const categoryData = ref({})
+  // const route = useRoute()
+  // const getCategory = async (id=route.params.id) => {
+  //   // 如何在setup中获取路由参数 useRoute() -> route 等价于this.$route
+  //   const res = await findTopCategoryAPI(id)
+  //   categoryData.value = res.result
+  // }
+  // onMounted(() => {
+  //   getCategory()
+  // })
+
+
+//   const BannerList=ref([])
+// const getBanner= async()=>{
+// const  res =await getBannerAPI({
+//   distributionSite:'2'
+// })
+// BannerList.value=res.result
+// }
+// onMounted(() => {
+//   getBanner()
+// })
 </script>
 
 <template>
