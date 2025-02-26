@@ -6,7 +6,7 @@ import { onBeforeRouteUpdate, useRoute } from 'vue-router'
 //
 import GoodsItem from '@/views/Home/components/GoodsItem.vue'
 
-
+const disabled=ref(false)
   const categoryData = ref({})
   const route = useRoute()
   const getCategoryFilter = async (id = route.params.id) => {
@@ -34,8 +34,19 @@ const getGoodList = async () => {
 }
 
 onMounted(() => getGoodList())
-
-
+const tabChange=()=>{
+ reqData.value.page=1,
+ getGoodList()
+}
+const load=async()=>{
+reqData.value.page++;
+   const res= await getGoodList(reqData.value);
+//  goodList.value=[...goodList.value,...res.value.result.items]
+goodList.value.push(...res.value.result.items);
+ if (res.value.result.items.length===0) {
+  disabled.value=true
+ }
+}
 </script>
 
 <template>
@@ -50,12 +61,12 @@ onMounted(() => getGoodList())
       </el-breadcrumb>
     </div>
     <div class="sub-container">
-      <el-tabs>
+      <el-tabs v-model="reqData.sortField" @tab-change="tabChange">
         <el-tab-pane label="最新商品" name="publishTime"></el-tab-pane>
         <el-tab-pane label="最高人气" name="orderNum"></el-tab-pane>
         <el-tab-pane label="评论最多" name="evaluateNum"></el-tab-pane>
       </el-tabs>
-      <div class="body">
+      <div class="body" v-infinite-scroll="load" :infinite-scroll-disabled="disabled">
          <!-- 商品列表-->
           <GoodsItem v-for="goods in goodList" :good="goods" :key="goods.id"></GoodsItem>
       </div>
