@@ -13,7 +13,7 @@ const { y } = useScroll(window)
       <ul class="app-header-nav ">
         <li
         v-for="item in categorystore.CategoryList" :key="item.id"
-        > <RouterLink to="/">{{item.name}}</RouterLink> </li>
+        > <RouterLink :to="`/category/${item.id}`">{{item.name}}</RouterLink> </li>
       </ul>
 
       <div class="right">

@@ -11,8 +11,7 @@ import homeProduct from './components/HomeProduct.vue'
     <HomeCategory />
     <HomeBanner />
   </div>
-
-  <homeProduct />
   <HomeNew title="新鲜好物"  subtitle="新鲜出炉 品质靠谱"/>
   <HomeHot  title="人气推荐"  subtitle="人气推荐 好多商品" />
+  <homeProduct />
 </template>
