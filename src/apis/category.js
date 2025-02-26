@@ -7,3 +7,12 @@ export const findTopCategoryAPI = (id) => {
     }
   })
 }
+
+export const findCategoryFilterAPI = (id) => {
+  return http({
+    url: '/category/sub/filter',
+    params: {
+      id
+    }
+  })
+}
