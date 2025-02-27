@@ -2,6 +2,7 @@
 // import HomePanel from './HomePanel.vue'
 import DetailHot from '@/views/Detail/components/DetailHot.vue'
 import { findDetailAPI } from '@/apis/details'
+import ImageView from '@/components/ImageView/index.vue'
 import { ref,onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 const goods = ref([])
@@ -41,7 +42,7 @@ onMounted(() => {
           <div class="goods-info">
             <div class="media">
               <!-- 图片预览区 -->
-
+<ImageView :image-list="goods.mainPictures"/>
               <!-- 统计数量 -->
               <ul class="goods-sales">
                 <li>
