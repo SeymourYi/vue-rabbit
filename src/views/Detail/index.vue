@@ -5,6 +5,7 @@ import { findDetailAPI } from '@/apis/details'
 import ImageView from '@/components/ImageView/index.vue'
 import { ref,onMounted } from 'vue'
 import { useRoute } from 'vue-router'
+import  XtxSku  from'@/components/XtxSku/index.vue'
 const goods = ref([])
 const getHotList = async () => {
  const router=  useRoute()
@@ -14,6 +15,9 @@ const getHotList = async () => {
 onMounted(() => {
   getHotList()
 })
+const skuChange=(sku)=>{
+  console.log(sku);
+}
 </script>
 
 <template>
@@ -91,7 +95,7 @@ onMounted(() => {
                 </dl>
               </div>
               <!-- sku组件 -->
-
+<XtxSku :goods="goods" @change="skuChange"/>
               <!-- 数据组件 -->
 
               <!-- 按钮组件 -->
