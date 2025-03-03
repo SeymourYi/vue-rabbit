@@ -39,7 +39,7 @@ count:num.value,
 price:goods.value.price,
 desc:goods.value.desc,
 pic:goods.value.mainPictures[0],
-
+selected:true
   })
 }else{
   //

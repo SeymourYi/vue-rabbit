@@ -20,6 +20,8 @@ httpBase.interceptors.request.use(config => {
 
 // axios响应式拦截器
 httpBase.interceptors.response.use(res => res.data, e => {
+  console.log(e, "aaaaaaaaaaa");
+
   ElMessage({
     type: 'warning',
     message: e.response.data.message
