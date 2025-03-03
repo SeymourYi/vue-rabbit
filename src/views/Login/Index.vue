@@ -4,6 +4,8 @@ import { useRouter } from 'vue-router'
 import {findLoginAPI} from '@/apis/user'
 import { ElMessage } from 'element-plus'
 import 'element-plus/theme-chalk/el-message.css'
+import { useUserStore } from '@/stores/user'
+const useStore=useUserStore()
 const form = ref({
   account:'',
   password:'',
@@ -51,8 +53,9 @@ console.log('====================================');
 console.log(valid);
 console.log('====================================');
 if (valid) {
- const res=  await findLoginAPI({account,password})
- console.log(res);
+ await useStore.getUserInfo({account,password})
+//  const res=  await findLoginAPI({account,password})
+//  console.log(res);
  ElMessage({type:'success',message:'登录成功',})
  router.replace({path:'/'})
 }else{
