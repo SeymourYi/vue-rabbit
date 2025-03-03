@@ -35,7 +35,11 @@ id:goods.value.id,
 name:goods.value.name,
 //...
 skuId:skuObj.skuId,
-count:num.value
+count:num.value,
+price:goods.value.price,
+desc:goods.value.desc,
+pic:goods.value.mainPictures[0],
+
   })
 }else{
   //
